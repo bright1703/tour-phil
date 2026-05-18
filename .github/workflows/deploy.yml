@@ -1,0 +1,35 @@
+name: Deploy to Netlify
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+
+      - name: Deploy to Netlify
+        run: |
+          cd out
+          zip -r ../out.zip .
+          curl -s -X POST \
+            "https://api.netlify.com/api/v1/sites/${{ secrets.NETLIFY_SITE_ID }}/deploys" \
+            -H "Authorization: Bearer ${{ secrets.NETLIFY_AUTH_TOKEN }}" \
+            -H "Content-Type: application/zip" \
+            --data-binary "@../out.zip" \
+            | grep -o '"state":"[^"]*"'
