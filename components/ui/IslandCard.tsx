@@ -6,17 +6,7 @@ interface IslandCardProps {
   description: string;
   tourCount: number;
   featured?: boolean;
-  bgColor?: string;
 }
-
-const islandColors: Record<string, string> = {
-  palawan: "bg-[#2a4a3e]",
-  boracay: "bg-[#1e3a5f]",
-  cebu: "bg-[#3d2a1e]",
-  bohol: "bg-[#2d3a1e]",
-  manila: "bg-[#2a2040]",
-  camiguin: "bg-[#3a2020]",
-};
 
 export default function IslandCard({
   name,
@@ -25,17 +15,15 @@ export default function IslandCard({
   tourCount,
   featured = false,
 }: IslandCardProps) {
-  const bg = islandColors[slug] || "bg-[#2a3a30]";
-
   return (
     <Link
       href={`/islands/${slug}`}
-      className={`group block ${bg} text-sand p-8 relative overflow-hidden ${featured ? "md:row-span-2" : ""}`}
+      className="group block bg-gradient-to-br from-[#1a5c52] to-[#0d3830] hover:from-[#206b5f] hover:to-[#113f35] text-sand p-8 relative overflow-hidden transition-all duration-300 h-full"
     >
       {/* Decorative corner */}
       <div className="absolute top-0 right-0 w-24 h-24 border-b border-l border-sand/10" />
 
-      <div className={`flex flex-col ${featured ? "h-full min-h-[320px]" : "min-h-[200px]"} justify-between`}>
+      <div className={`flex flex-col ${featured ? "min-h-[400px]" : "min-h-[200px]"} justify-between`}>
         <div>
           <p className="text-xs tracking-[0.2em] uppercase text-sand/40 mb-3">
             {tourCount} {tourCount === 1 ? "тур" : tourCount < 5 ? "тура" : "туров"}

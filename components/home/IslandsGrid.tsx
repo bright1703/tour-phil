@@ -6,8 +6,6 @@ interface IslandsGridProps {
   allTours: Tour[];
 }
 
-const islandOrder = ["palawan", "boracay", "cebu", "bohol", "manila", "camiguin"];
-
 const islandDescriptions: Record<string, string> = {
   palawan: "Известняковые скалы, бирюзовые лагуны и объект ЮНЕСКО — подземная река.",
   boracay: "Белейший пляж и лазурная вода. Самый знаменитый остров страны.",
@@ -18,9 +16,16 @@ const islandDescriptions: Record<string, string> = {
 };
 
 export default function IslandsGrid({ islands, allTours }: IslandsGridProps) {
-  const sorted = islandOrder
-    .map((slug) => islands.find((i) => i.slug === slug))
-    .filter(Boolean) as Island[];
+  const getIsland = (slug: string) => islands.find((i) => i.slug === slug);
+  const getTourCount = (slug: string) =>
+    allTours.filter((t) => t.island === slug).length || 2;
+
+  const palawan = getIsland("palawan");
+  const boracay = getIsland("boracay");
+  const cebu = getIsland("cebu");
+  const bohol = getIsland("bohol");
+  const manila = getIsland("manila");
+  const camiguin = getIsland("camiguin");
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-24">
@@ -37,22 +42,85 @@ export default function IslandsGrid({ islands, allTours }: IslandsGridProps) {
         </p>
       </div>
 
-      {/* Grid: Palawan featured (tall) + 5 others */}
+      {/*
+        Layout (desktop):
+        [ Palawan (tall) ] [ Boracay ] [ Cebu   ]
+        [ Palawan        ] [ Bohol   ] [ Manila ]
+        [ Camiguin — spans all 3 columns         ]
+      */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
-        {sorted.map((island, i) => {
-          const count = allTours.filter((t) => t.island === island.slug).length;
-          return (
-            <div key={island.slug} className={i === 0 ? "lg:row-span-2" : ""}>
-              <IslandCard
-                name={island.name}
-                slug={island.slug}
-                description={islandDescriptions[island.slug] || island.description}
-                tourCount={count || 2}
-                featured={i === 0}
-              />
-            </div>
-          );
-        })}
+        {/* Palawan — tall, spans 2 rows */}
+        {palawan && (
+          <div className="lg:row-span-2">
+            <IslandCard
+              name={palawan.name}
+              slug={palawan.slug}
+              description={islandDescriptions["palawan"]}
+              tourCount={getTourCount("palawan")}
+              featured
+            />
+          </div>
+        )}
+
+        {/* Boracay — top-right col 2 */}
+        {boracay && (
+          <div>
+            <IslandCard
+              name={boracay.name}
+              slug={boracay.slug}
+              description={islandDescriptions["boracay"]}
+              tourCount={getTourCount("boracay")}
+            />
+          </div>
+        )}
+
+        {/* Cebu — top-right col 3 */}
+        {cebu && (
+          <div>
+            <IslandCard
+              name={cebu.name}
+              slug={cebu.slug}
+              description={islandDescriptions["cebu"]}
+              tourCount={getTourCount("cebu")}
+            />
+          </div>
+        )}
+
+        {/* Bohol — bottom-right col 2 */}
+        {bohol && (
+          <div>
+            <IslandCard
+              name={bohol.name}
+              slug={bohol.slug}
+              description={islandDescriptions["bohol"]}
+              tourCount={getTourCount("bohol")}
+            />
+          </div>
+        )}
+
+        {/* Manila — bottom-right col 3 */}
+        {manila && (
+          <div>
+            <IslandCard
+              name={manila.name}
+              slug={manila.slug}
+              description={islandDescriptions["manila"]}
+              tourCount={getTourCount("manila")}
+            />
+          </div>
+        )}
+
+        {/* Camiguin — spans all 3 columns as wide bottom card */}
+        {camiguin && (
+          <div className="lg:col-span-3">
+            <IslandCard
+              name={camiguin.name}
+              slug={camiguin.slug}
+              description={islandDescriptions["camiguin"]}
+              tourCount={getTourCount("camiguin")}
+            />
+          </div>
+        )}
       </div>
     </section>
   );
