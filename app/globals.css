@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sand: #f5f0e8;
+  --dark: #1c1a17;
+  --mid: #6b6455;
+  --accent: #2a6b5e;
+  --accent-light: #3d8a7a;
+  --warm: #c4845a;
+  --line: rgba(28,26,23,0.12);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--sand);
+  color: var(--dark);
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block bg-accent text-sand px-7 py-3.5 text-xs tracking-widest uppercase font-medium hover:bg-accent-light transition-colors duration-200 cursor-pointer;
+  }
+
+  .btn-outline {
+    @apply inline-block border border-dark/20 text-dark px-7 py-3.5 text-xs tracking-widest uppercase font-medium hover:bg-dark hover:text-sand transition-colors duration-200 cursor-pointer;
+  }
+
+  .section-label {
+    @apply text-xs tracking-[0.2em] uppercase text-mid;
+  }
+}
+
+.prose-custom h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.875rem;
+  font-weight: 500;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--dark);
+}
+
+.prose-custom h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--dark);
+}
+
+.prose-custom p {
+  margin-bottom: 1.25rem;
+  line-height: 1.75;
+  color: var(--mid);
+}
+
+.prose-custom ul, .prose-custom ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+  color: var(--mid);
+  line-height: 1.75;
+}
+
+.prose-custom li {
+  margin-bottom: 0.4rem;
+}
+
+.prose-custom strong {
+  color: var(--dark);
+  font-weight: 500;
+}

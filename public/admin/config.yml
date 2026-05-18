@@ -1,0 +1,88 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+publish_mode: editorial_workflow
+
+locale: ru
+
+collections:
+  - name: tours
+    label: Туры
+    folder: content/tours
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Название, name: name, widget: string }
+      - label: Остров
+        name: island
+        widget: select
+        options:
+          - { label: Манила, value: manila }
+          - { label: Боракай, value: boracay }
+          - { label: Себу, value: cebu }
+          - { label: Палаван, value: palawan }
+          - { label: Бохоль, value: bohol }
+          - { label: Камигин, value: camiguin }
+      - { label: Продолжительность, name: duration, widget: string, hint: "Например: 1 день или 3 дня" }
+      - { label: Цена от (USD), name: price_from, widget: number, default: 0 }
+      - { label: Краткое описание, name: short_description, widget: text, hint: "1-2 предложения для карточки" }
+      - { label: Полное описание, name: body, widget: markdown }
+      - label: Включено
+        name: included
+        widget: list
+        field: { label: Пункт, name: item, widget: string }
+      - label: Не включено
+        name: not_included
+        widget: list
+        field: { label: Пункт, name: item, widget: string }
+      - label: Теги
+        name: tags
+        widget: list
+        required: false
+        field: { label: Тег, name: tag, widget: string }
+      - { label: Показывать на главной, name: featured, widget: boolean, default: false }
+      - label: Фотографии
+        name: photos
+        widget: list
+        required: false
+        field: { label: Фото, name: photo, widget: image }
+      - { label: SEO заголовок, name: seo_title, widget: string, required: false }
+      - { label: SEO описание, name: seo_description, widget: text, required: false }
+
+  - name: islands
+    label: Острова
+    folder: content/islands
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - { label: Название, name: name, widget: string }
+      - { label: Краткое описание, name: description, widget: text }
+      - { label: Полный текст, name: body, widget: markdown }
+      - { label: SEO заголовок, name: seo_title, widget: string, required: false }
+      - { label: SEO описание, name: seo_description, widget: text, required: false }
+
+  - name: blog
+    label: Статьи
+    folder: content/blog
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Заголовок, name: title, widget: string }
+      - { label: URL (slug), name: slug, widget: string }
+      - label: Категория
+        name: category
+        widget: select
+        options:
+          - { label: Виза, value: visa }
+          - { label: Деньги, value: money }
+          - { label: Транспорт, value: transport }
+          - { label: Связь, value: communication }
+          - { label: Советы, value: tips }
+      - { label: Краткое описание, name: excerpt, widget: text }
+      - { label: Текст статьи, name: body, widget: markdown }
+      - { label: SEO заголовок, name: seo_title, widget: string, required: false }
+      - { label: SEO описание, name: seo_description, widget: text, required: false }

@@ -1,0 +1,113 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Next.js SSG static export
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# 301 redirects for old URLs → new structure
+[[redirects]]
+  from = "/excursions/manila/"
+  to = "/tours/manila-city-tour"
+  status = 301
+
+[[redirects]]
+  from = "/excursions/tagaytay/"
+  to = "/tours/tagaytay-taal"
+  status = 301
+
+[[redirects]]
+  from = "/boracay/"
+  to = "/islands/boracay"
+  status = 301
+
+[[redirects]]
+  from = "/cebu/"
+  to = "/islands/cebu"
+  status = 301
+
+[[redirects]]
+  from = "/palawan/"
+  to = "/islands/palawan"
+  status = 301
+
+[[redirects]]
+  from = "/bohol/"
+  to = "/islands/bohol"
+  status = 301
+
+[[redirects]]
+  from = "/visa/"
+  to = "/blog/visa"
+  status = 301
+
+[[redirects]]
+  from = "/viza"
+  to = "/blog/visa"
+  status = 301
+
+[[redirects]]
+  from = "/money/"
+  to = "/blog/money"
+  status = 301
+
+[[redirects]]
+  from = "/dienghi"
+  to = "/blog/money"
+  status = 301
+
+[[redirects]]
+  from = "/communication/"
+  to = "/blog/communication"
+  status = 301
+
+[[redirects]]
+  from = "/filippiny_sotovaia_sviaz_"
+  to = "/blog/communication"
+  status = 301
+
+[[redirects]]
+  from = "/ekskursiia-po-manile"
+  to = "/tours/manila-city-tour"
+  status = 301
+
+[[redirects]]
+  from = "/ekskursiia_v_tagaytay"
+  to = "/tours/tagaytay-taal"
+  status = 301
+
+[[redirects]]
+  from = "/ekskursii_na_borakae"
+  to = "/islands/boracay"
+  status = 301
+
+[[redirects]]
+  from = "/ekskursii_iz_siebu"
+  to = "/islands/cebu"
+  status = 301
+
+[[redirects]]
+  from = "/ekskursii_na_palavanie"
+  to = "/islands/palawan"
+  status = 301
+
+[[redirects]]
+  from = "/ekskursii_iz_bokhol"
+  to = "/islands/bohol"
+  status = 301
+
+[[redirects]]
+  from = "/kontakty"
+  to = "/contacts"
+  status = 301
+
+# Netlify Identity redirect
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+  conditions = {Role = ["admin"]}
