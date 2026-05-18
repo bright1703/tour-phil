@@ -4,10 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
-
-# Next.js SSG static export
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+  NEXT_TELEMETRY_DISABLED = "1"
 
 # 301 redirects for old URLs → new structure
 [[redirects]]

@@ -17,8 +17,8 @@ const config: Config = {
         warm: "#c4845a",
       },
       fontFamily: {
-        cormorant: ["var(--font-cormorant)", "Georgia", "serif"],
-        dm: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+        cormorant: ["Cormorant Garamond", "Georgia", "serif"],
+        dm: ["DM Sans", "system-ui", "sans-serif"],
       },
       borderColor: {
         line: "rgba(28,26,23,0.12)",
