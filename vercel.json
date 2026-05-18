@@ -1,0 +1,23 @@
+{
+  "redirects": [
+    { "source": "/excursions/manila/", "destination": "/tours/manila-city-tour", "permanent": true },
+    { "source": "/excursions/tagaytay/", "destination": "/tours/tagaytay-taal", "permanent": true },
+    { "source": "/boracay/", "destination": "/islands/boracay", "permanent": true },
+    { "source": "/cebu/", "destination": "/islands/cebu", "permanent": true },
+    { "source": "/palawan/", "destination": "/islands/palawan", "permanent": true },
+    { "source": "/bohol/", "destination": "/islands/bohol", "permanent": true },
+    { "source": "/visa/", "destination": "/blog/visa", "permanent": true },
+    { "source": "/viza", "destination": "/blog/visa", "permanent": true },
+    { "source": "/money/", "destination": "/blog/money", "permanent": true },
+    { "source": "/dienghi", "destination": "/blog/money", "permanent": true },
+    { "source": "/communication/", "destination": "/blog/communication", "permanent": true },
+    { "source": "/filippiny_sotovaia_sviaz_", "destination": "/blog/communication", "permanent": true },
+    { "source": "/ekskursiia-po-manile", "destination": "/tours/manila-city-tour", "permanent": true },
+    { "source": "/ekskursiia_v_tagaytay", "destination": "/tours/tagaytay-taal", "permanent": true },
+    { "source": "/ekskursii_na_borakae", "destination": "/islands/boracay", "permanent": true },
+    { "source": "/ekskursii_iz_siebu", "destination": "/islands/cebu", "permanent": true },
+    { "source": "/ekskursii_na_palavanie", "destination": "/islands/palawan", "permanent": true },
+    { "source": "/ekskursii_iz_bokhol", "destination": "/islands/bohol", "permanent": true },
+    { "source": "/kontakty", "destination": "/contacts", "permanent": true }
+  ]
+}
